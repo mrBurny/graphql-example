@@ -1,0 +1,28 @@
+scalar Long
+
+type Query {
+    sampleIdempotentCall(request: SampleRequest!): SampleResponse
+}
+
+input SampleRequest {
+    defaultValue: String!,
+    ageInMillis: Long,
+    someOtherValue: String,
+    configParams: [ConfigurationPair!]
+}
+
+input ConfigurationPair {
+    key: String!,
+    value: String!
+}
+
+type SampleResponse {
+    value: String!,
+    reason: String!,
+    someExtraParams: [ExtraParam!]
+}
+
+type ExtraParam {
+    key: String!,
+    value: String!
+}
